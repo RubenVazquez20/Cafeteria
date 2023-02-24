@@ -21,7 +21,3 @@ def agregar_nueva_bebida(bebida_str):
         # con el nombre y los tamaños especificados.
         return "Se agrego el producto"
         #print("Se agregó la bebida {} con los tamaños {}.".format(nombre, tamanos))
-
-
-#bebida_str = input("Ingrese los elementos separados por coma: ")
-#agregar_nueva_bebida(bebida_str)
