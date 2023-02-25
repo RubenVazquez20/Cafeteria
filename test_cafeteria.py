@@ -8,7 +8,7 @@ def test_nameLengthLessThan2():
     assert agregar_nueva_bebida("p,4,5,6,7,8") == "El nombre de la bebida debe contar con al menos 2 caracteres"
 
 def test_nameLengthEqualTo1():
-    assert agregar_nueva_bebida("p,4,8,12") == "El nombre de la bebida no puede contar con solo 1 caracter"
+    assert agregar_nueva_bebida("p,4,8,12") == "El nombre de la bebida debe contar con al menos 2 caracteres"
 
 def test_nameLengthGreaterThan15():
     assert agregar_nueva_bebida("PaoPao de Mango y Cereza, 5,6,9,10") == "El nombre de la bebida debe contar con maximo 15 caracteres"

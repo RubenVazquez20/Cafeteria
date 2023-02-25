@@ -1,9 +1,12 @@
 import re
 
-drink = input("Dame una palabra: ")
+val = [1,4.5,8]
+s = "2,3,4.7,5"
+r = s.split(",")
 
-def detector_espacios(drink):
-    
-    return re.findall(r'\d\s+\d', drink)
-    
-detector_espacios(drink)
+
+for v in r:
+    if type(v) == float:
+        print(v, "es deciamal")
+    else:
+        print(v, "no es")
