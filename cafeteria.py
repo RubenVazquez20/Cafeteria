@@ -1,23 +1,60 @@
-def agregar_nueva_bebida(bebida_str):
+import re
 
-    bebida_info = bebida_str.replace(" ", "").split(",")
-    nombre = bebida_info[0]
-    tamanos = [int(tam) for tam in bebida_info[1:] if tam.isdigit()]
+def agregar_nueva_bebida(drink):
 
-    if len(nombre) < 2 or len(nombre) > 15:
-        return "El nombre de la bebida debe tener entre 2 y 15 caracteres."
+    
+    drinkInfo = drink.replace(" ", "").split(",")
+    size = [int(ze) for ze in drinkInfo[1:] if ze.isdigit()]
+    name = drinkInfo[0]
 
-    elif len(tamanos) == 0:
-        return "Debe ingresar al menos un tamaño para la bebida."
+    #Taste Cases 
+    #item name is less than 2
+    if len(name) < 2:
+        return "El nombre de la bebida debe contar con al menos 2 caracteres"
+    
+    elif len(name) > 15:
+        return "El nombre de la bebida debe contar con maximo 15 caracteres"
+    
+    elif len(name) == 1:
+        return "El nombre de la bebida no puede contar con solo 1 caracter"
+    
+    #item name isn't alphabethic
+    elif name.isalpha() == False:
+        return "El nombre solo debe contener caracteres alfabeticos"
 
-    elif any(tam < 1 or tam > 48 for tam in tamanos):
-        return "El tamaño de la bebida debe estar en el rango de 1 a 48."
+    #Size value is less than 1
+    elif len(size) < 1:
+        return "El tamaño de la bebida debe ser mayor a 1"
+    
+    elif len(size) > 48:
+        return "El tamaño de la bebida debe ser menor a 48"
+    
+    elif type(size) == float:
+        return "Los tamaños no pueden ser decimales"
+    
+    elif type(size) == chr:
+        return "Los tamaños no pueden ser caracteres"
 
-    elif tamanos != sorted(tamanos):
-        return "Los tamaños deben ser ingresados en orden ascendente."
+    #Size values entered in nonascending order
+    elif size != sorted(size):
+        return "Los tamaños deben ser ascendentes"
+    
+    elif len(size) == 0:
+        return "Se necesita al menos 1 tamaño de la bebida" 
+    
+    elif len(size) > 5:
+        return "Solo se admiten 5 tamaños por bebida"
+    
+    #When the drink name isn't in the correct place
+    for ze in size: 
+        if type(ze) != int and len(ze) >= 2:
+            return "El nombre del producto debe estar al inicio"
+    
+    blankSpaces = drink.split(",")
+    for item in blankSpaces:
+        if item == " ":
+            return "Los espacios en blanco seran ignorados"
 
     else:
-        # Agregar la nueva bebida a la base de datos o al menú
-        # con el nombre y los tamaños especificados.
-        return "Se agrego el producto"
+        return "Se agrego la bebida"
         #print("Se agregó la bebida {} con los tamaños {}.".format(nombre, tamanos))
